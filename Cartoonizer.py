@@ -1,22 +1,38 @@
 import numpy as np
 import cv2
 
+<<<<<<< HEAD
 img_rgb = cv2.imread("sad1.png")
+=======
+img_rgb = cv2.imread("G.png")
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 
 def convert(img_rgb):
 	num_down = 2       # number of downsampling steps
 	num_bilateral = 7  # number of bilateral filtering steps
+<<<<<<< HEAD
 
+=======
+	 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	# # downsample image using Gaussian pyramid
 	img_color = img_rgb
 	for _ in xrange(num_down):
 	    img_color = cv2.pyrDown(img_color)
+<<<<<<< HEAD
 
+=======
+	 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	# # repeatedly apply small bilateral filter instead of
 	# # applying one large filter
 	for _ in xrange(num_bilateral):
 	    img_color = cv2.bilateralFilter(img_color, d=9,sigmaColor=9, sigmaSpace=7)
+<<<<<<< HEAD
 
+=======
+	 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	for _ in xrange(num_down):
 	    img_color = cv2.pyrUp(img_color)
 
@@ -26,7 +42,11 @@ def convert(img_rgb):
 	img_blur = cv2.medianBlur(img_gray, 7)
 
 	# # detect and enhance edges
+<<<<<<< HEAD
 	img_edge = cv2.adaptiveThreshold(img_blur, 255, cv2.ADAPTIVE_THRESH_MEAN_C,
+=======
+	img_edge = cv2.adaptiveThreshold(img_blur, 255, cv2.ADAPTIVE_THRESH_MEAN_C, 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	    cv2.THRESH_BINARY, blockSize=9, C=2)
 
 	# # convert back to color, bit-AND with color image
@@ -41,7 +61,11 @@ def convert(img_rgb):
 	img_cartoon = cv2.bitwise_and(img_color, img_edge)
 	r = 100.0 / img_cartoon.shape[1]
 	dim = (100, int(img_cartoon.shape[0] * r))
+<<<<<<< HEAD
 
+=======
+	 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	# perform the actual resizing of the image and show it
 	resized = cv2.resize(img_cartoon, dim, interpolation = cv2.INTER_AREA)
 	#cv2.imshow("resized", resized)
@@ -70,7 +94,11 @@ if (len(label_list) > 0):
 			Toshow = cv2.imread(str(index_list[i]) + '.png')
 			Toshow.imshow(); #show the image in emoji_list with corresponding emoji_index
 			cv2.waitKey()
+<<<<<<< HEAD
 		else:
+=======
+		else: 
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 			#emoji_list.append([emoji_index,emoji_label])
 			index_list.append(emoji_index)
 			label_list.append(emoji_label)
@@ -78,10 +106,17 @@ if (len(label_list) > 0):
 			#emoji_label = emoji_label + 1
 			convert(img_rgb); #show this image
 			cv2.waitKey()
+<<<<<<< HEAD
 else:
 	index_list.append(emoji_index)
 	label_list.append(emoji_label)
 	convert(img_rgb); #show this image
+=======
+else:	
+	index_list.append(emoji_index)
+	label_list.append(emoji_label)
+	convert(img_rgb); #show this image		
+>>>>>>> 65b641b5c1a34627b71b1d613d724c0d8f592fb6
 	cv2.waitKey()
 
 print index_list
